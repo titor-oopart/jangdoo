@@ -23,7 +23,7 @@ class UserManager(BaseUserManager):
             raise TypeError('Users must have an email.')
         if password is None:
             raise TypeError('User must have an email.')
-        user = serlf.model(username=username, email=self.normalize_email(email), **kwargs)
+        user = self.model(username=username, email=self.normalize_email(email), **kwargs)
         user.set_password(password)
         user.save(using=self._db)
         return user
@@ -51,6 +51,10 @@ class User(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(db_index=True, unique=True)
     is_active = models.BooleanField(default=True)
     is_superuser = models.BooleanField(default=False)
+
+    bio = models.TextField(null=True)
+    avatar = models.ImageField(null=True)
+
     created = models.DateTimeField(auto_now=True)
     updated = models.DateTimeField(auto_now_add=True)
     USERNAME_FIELD = 'email'
@@ -63,5 +67,4 @@ class User(AbstractBaseUser, PermissionsMixin):
     @property
     def name(self):
         return f"{self.first_name} {self.last_name}"
-
 
