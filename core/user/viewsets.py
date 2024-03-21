@@ -2,13 +2,13 @@
 
 # Create your views here.
 from rest_framework.permissions import AllowAny
-from rest_framework import viewsets
+from core.abstract.viewsets import AbstractViewSet
 from core.user.serializers import UserSerializer
 from core.user.models import User
 from rest_framework.permissions import IsAuthenticated
 
 
-class UserViewSet(viewsets.ModelViewSet):
+class UserViewSet(AbstractViewSet):
     http_method_names = ('patch', 'get')
     permission_classes = (IsAuthenticated,)
     serializer_class = UserSerializer
