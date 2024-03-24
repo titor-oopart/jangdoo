@@ -1,7 +1,5 @@
-# from django.shortcuts import render
-
-# Create your views here.
 from rest_framework.permissions import AllowAny
+
 from core.abstract.viewsets import AbstractViewSet
 from core.user.serializers import UserSerializer
 from core.user.models import User
