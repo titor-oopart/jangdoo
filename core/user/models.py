@@ -22,7 +22,7 @@ class UserManager(BaseUserManager, AbstractManager):
         user.save(using=self._db)
         return user
 
-    def create_sueruser(self, username, email, password, **kwargs):
+    def create_superuser(self, username, email, password, **kwargs):
         """
         Create and return a 'user' with superuser (admin) permissions.
         """
